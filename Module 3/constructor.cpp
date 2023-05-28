@@ -1,40 +1,48 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
-// Consturctor
-// It is a special function cl
-class Student
-{
-public:
-    char name[100];
-    int roll;
-    int cls;
-    char section;
+class Person {
+private:
+    string name;
+    float height;
+    int age;
 
-    Student(int r, int s, int c, char *a)
-    {
-        cout<<"I am called automatically"<<endl;
-        roll = r;
-        section = s;
-        cls = c;
-        strcpy(name, a);
+public:
+    Person(string n, float h, int a) {
+        name = n;
+        height = h;
+        age = a;
+    }
+
+    void displayInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Height: " << height << " feet" << endl;
+        cout << "Age: " << age << " years" << endl;
     }
 };
-int main()
-{
 
-    Student rahim (29, 'A', 7, "Rahim Ullah");
-    Student karim (55, 'D', 7, "Karim Ullah");
+int main() {
+    string personName;
+    float personHeight;
+    int personAge;
+
+    cout << "Enter name: ";
+    getline(cin, personName);
+    cout << "Enter height (in feet): ";
+    cin >> personHeight;
+    cout << "Enter age: ";
+    cin >> personAge;
+
     
-    cout<<rahim.roll<<endl;
-    cout<<rahim.section<<endl;
-    cout<<rahim.cls<<endl;
-    cout<<rahim.name<<endl;
+    Person* personPtr = new Person(personName, personHeight, personAge);
 
-    cout<<karim.roll<<endl;
-    cout<<karim.section<<endl;
-    cout<<karim.cls<<endl;
-    cout<<karim.name<<endl;
+    
+    cout << "\nPerson's Information:\n";
+    personPtr->displayInfo();
+
+    
+    delete personPtr;
 
     return 0;
 }
